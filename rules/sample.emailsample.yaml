@@ -1,0 +1,19 @@
+---
+name: Sample
+description: "Rule which sends an email when a trigger recieved from zabbix"
+pack: email
+enabled: false
+trigger:
+  type: email.imap.message
+  parameters: {}
+criteria:
+  trigger.from:
+    pattern: http
+    type: contains
+action:
+  ref: zabbix.sendmail
+  parameters:
+    body: 'Host is down'
+    to: janedoe@gmail.com
+    from: stackstorm@yourcompanyname.com
+    subject: 'Host is down'
